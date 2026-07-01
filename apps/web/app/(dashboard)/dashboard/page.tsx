@@ -3,14 +3,14 @@
 import {
   AppBar,
   Box,
-  Card,
-  CardContent,
   Container,
+  Stack,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { LogoutButton } from "@/features/auth/LogoutButton";
 import { useAuth } from "@/features/auth/AuthProvider";
+import { DashboardContent } from "@/features/dashboard/DashboardContent";
 
 export default function DashboardPage() {
   const { user } = useAuth();
@@ -22,23 +22,20 @@ export default function DashboardPage() {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Family Expense Tracker
           </Typography>
-          <LogoutButton />
+          <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
+            <Typography
+              variant="body2"
+              sx={{ display: { xs: "none", sm: "block" }, opacity: 0.9 }}
+            >
+              {user?.email}
+            </Typography>
+            <LogoutButton />
+          </Stack>
         </Toolbar>
       </AppBar>
 
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Typography variant="h4" gutterBottom>
-          Dashboard
-        </Typography>
-        <Card>
-          <CardContent>
-            <Box sx={{ py: 2 }}>
-              <Typography color="text.secondary">
-                Signed in as <strong>{user?.email}</strong>
-              </Typography>
-            </Box>
-          </CardContent>
-        </Card>
+        <DashboardContent />
       </Container>
     </Box>
   );
