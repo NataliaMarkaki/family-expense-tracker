@@ -51,8 +51,8 @@ CREATE INDEX "_ExpenseCategories_B_index" ON "_ExpenseCategories"("B");
 -- AddForeignKey
 ALTER TABLE "expenses" ADD CONSTRAINT "expenses_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
--- AddForeignKey
-ALTER TABLE "_ExpenseCategories" ADD CONSTRAINT "_ExpenseCategories_A_fkey" FOREIGN KEY ("A") REFERENCES "expenses"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+-- AddForeignKey: A=categories, B=expenses (Prisma alphabetical model name order)
+ALTER TABLE "_ExpenseCategories" ADD CONSTRAINT "_ExpenseCategories_A_fkey" FOREIGN KEY ("A") REFERENCES "categories"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_ExpenseCategories" ADD CONSTRAINT "_ExpenseCategories_B_fkey" FOREIGN KEY ("B") REFERENCES "categories"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_ExpenseCategories" ADD CONSTRAINT "_ExpenseCategories_B_fkey" FOREIGN KEY ("B") REFERENCES "expenses"("id") ON DELETE CASCADE ON UPDATE CASCADE;

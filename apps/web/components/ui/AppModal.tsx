@@ -17,7 +17,6 @@ interface AppModalProps {
   maxWidth?: DialogProps["maxWidth"];
 }
 
-/** Reusable modal: a titled MUI Dialog with a close button. */
 export function AppModal({
   open,
   title,

@@ -21,7 +21,7 @@ model User {
 model Category {
   id        String    @id @default(uuid())
   name      String    @unique
-  expenses  Expense[]
+  expenses  Expense[] @relation("ExpenseCategories")
   createdAt DateTime  @default(now()) @map("created_at")
 
   @@map("categories")
@@ -33,7 +33,7 @@ model Expense {
   amount     Decimal    @db.Decimal(10, 2)
   userId     String     @map("user_id")
   user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  categories Category[]
+  categories Category[] @relation("ExpenseCategories")
   createdAt  DateTime   @default(now()) @map("created_at")
   updatedAt  DateTime   @updatedAt @map("updated_at")
 

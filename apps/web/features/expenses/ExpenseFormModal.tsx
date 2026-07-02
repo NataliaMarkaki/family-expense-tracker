@@ -115,8 +115,8 @@ export function ExpenseFormModal({
             slotProps={{
               htmlInput: { step: "0.01", min: "0" },
               input: {
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
+                endAdornment: (
+                  <InputAdornment position="start">£</InputAdornment>
                 ),
               },
             }}
