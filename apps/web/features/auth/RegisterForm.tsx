@@ -11,9 +11,9 @@ import {
   CardContent,
   Link as MuiLink,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
+import { NoFillTextField } from "@/components/ui/NoFillTextField";
 import { useRegister } from "./hooks";
 import { registerSchema, type RegisterFormValues } from "./schemas";
 import { getApiErrorMessage } from "@/lib/error";
@@ -48,7 +48,7 @@ export function RegisterForm() {
           Start tracking your family&apos;s expenses.
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
           <Stack spacing={2.5}>
             {registerMutation.isError && (
               <Alert severity="error">
@@ -56,37 +56,32 @@ export function RegisterForm() {
               </Alert>
             )}
 
-            <TextField
+            <NoFillTextField
               label="Name"
               fullWidth
-              autoComplete="name"
               error={!!errors.name}
               helperText={errors.name?.message}
               {...register("name")}
             />
-            <TextField
+            <NoFillTextField
               label="Email"
-              type="email"
               fullWidth
-              autoComplete="email"
               error={!!errors.email}
               helperText={errors.email?.message}
               {...register("email")}
             />
-            <TextField
+            <NoFillTextField
               label="Password"
               type="password"
               fullWidth
-              autoComplete="new-password"
               error={!!errors.password}
               helperText={errors.password?.message}
               {...register("password")}
             />
-            <TextField
+            <NoFillTextField
               label="Confirm Password"
               type="password"
               fullWidth
-              autoComplete="new-password"
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword?.message}
               {...register("confirmPassword")}

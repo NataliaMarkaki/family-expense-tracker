@@ -91,7 +91,7 @@ export function ExpenseFormModal({
       onClose={onClose}
       title={isEdit ? "Edit Expense" : "Add Expense"}
     >
-      <Box component="form" onSubmit={onSubmit} noValidate>
+      <Box component="form" onSubmit={onSubmit} noValidate autoComplete="off">
         <Stack spacing={2.5} sx={{ pt: 1 }}>
           {mutation.isError && (
             <Alert severity="error">
@@ -103,6 +103,7 @@ export function ExpenseFormModal({
             label="Name"
             fullWidth
             autoFocus
+            autoComplete="off"
             error={!!errors.name}
             helperText={errors.name?.message}
             {...register("name")}
@@ -112,6 +113,7 @@ export function ExpenseFormModal({
             label="Amount"
             type="number"
             fullWidth
+            autoComplete="off"
             slotProps={{
               htmlInput: { step: "0.01", min: "0" },
               input: {

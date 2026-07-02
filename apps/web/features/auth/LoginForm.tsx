@@ -11,9 +11,9 @@ import {
   CardContent,
   Link as MuiLink,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
+import { NoFillTextField } from "@/components/ui/NoFillTextField";
 import { useLogin } from "./hooks";
 import { loginSchema, type LoginFormValues } from "./schemas";
 import { getApiErrorMessage } from "@/lib/error";
@@ -44,7 +44,7 @@ export function LoginForm() {
           Sign in to your expense tracker.
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
           <Stack spacing={2.5}>
             {loginMutation.isError && (
               <Alert severity="error">
@@ -52,20 +52,18 @@ export function LoginForm() {
               </Alert>
             )}
 
-            <TextField
+            <NoFillTextField
               label="Email"
               type="email"
               fullWidth
-              autoComplete="email"
               error={!!errors.email}
               helperText={errors.email?.message}
               {...register("email")}
             />
-            <TextField
+            <NoFillTextField
               label="Password"
               type="password"
               fullWidth
-              autoComplete="current-password"
               error={!!errors.password}
               helperText={errors.password?.message}
               {...register("password")}
