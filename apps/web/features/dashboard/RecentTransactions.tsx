@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, Typography } from "@mui/material";
+import { Alert, Card, CardContent, Typography } from "@mui/material";
 import { ExpenseTable } from "@/components/ui/ExpenseTable";
 import { useRecentExpenses } from "@/features/expenses/hooks";
 import type { Expense } from "@/features/expenses/types";
@@ -11,7 +11,7 @@ interface RecentTransactionsProps {
 }
 
 export function RecentTransactions({ onEdit, onDelete }: RecentTransactionsProps) {
-  const { data = [], isLoading } = useRecentExpenses();
+  const { data = [], isLoading, isError } = useRecentExpenses();
 
   return (
     <Card>
@@ -22,13 +22,19 @@ export function RecentTransactions({ onEdit, onDelete }: RecentTransactionsProps
         <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
           Expenses from this week
         </Typography>
-        <ExpenseTable
-          expenses={data}
-          isLoading={isLoading}
-          emptyMessage="No expenses this week."
-          onEdit={onEdit}
-          onDelete={onDelete}
-        />
+        {isError ? (
+          <Alert severity="error" sx={{ mt: 1 }}>
+            Failed to load recent transactions. Please refresh the page.
+          </Alert>
+        ) : (
+          <ExpenseTable
+            expenses={data}
+            isLoading={isLoading}
+            emptyMessage="No expenses this week."
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
+        )}
       </CardContent>
     </Card>
   );

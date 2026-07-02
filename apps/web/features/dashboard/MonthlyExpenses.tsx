@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
+  Alert,
   Box,
   Card,
   CardContent,
@@ -21,7 +22,7 @@ interface MonthlyExpensesProps {
 }
 
 export function MonthlyExpenses({ onEdit, onDelete }: MonthlyExpensesProps) {
-  const { data: expenses = [], isLoading } = useMonthlyExpenses();
+  const { data: expenses = [], isLoading, isError } = useMonthlyExpenses();
   const { data: categories = [] } = useCategories();
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
@@ -67,17 +68,23 @@ export function MonthlyExpenses({ onEdit, onDelete }: MonthlyExpensesProps) {
           </Box>
         )}
 
-        <ExpenseTable
-          expenses={filtered}
-          isLoading={isLoading}
-          emptyMessage={
-            selected.size > 0
-              ? "No expenses match the selected categories."
-              : "No expenses this month."
-          }
-          onEdit={onEdit}
-          onDelete={onDelete}
-        />
+        {isError ? (
+          <Alert severity="error" sx={{ mt: 1 }}>
+            Failed to load monthly expenses. Please refresh the page.
+          </Alert>
+        ) : (
+          <ExpenseTable
+            expenses={filtered}
+            isLoading={isLoading}
+            emptyMessage={
+              selected.size > 0
+                ? "No expenses match the selected categories."
+                : "No expenses this month."
+            }
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
+        )}
       </CardContent>
     </Card>
   );
