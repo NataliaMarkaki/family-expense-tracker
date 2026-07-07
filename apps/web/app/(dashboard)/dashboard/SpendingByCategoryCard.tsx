@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Card, CardContent, Skeleton, Stack, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useSummary } from '@/features/expenses/hooks';
@@ -8,6 +9,7 @@ import { getCategoryColor } from '@/features/categories/colors';
 import { formatCurrency } from '@/lib/format';
 
 export function SpendingByCategoryCard() {
+  const { palette } = useTheme();
   const { data, isLoading, isError } = useSummary();
   const categories = data?.spendingByCategory ?? [];
 
@@ -15,7 +17,7 @@ export function SpendingByCategoryCard() {
     id: c.id,
     value: c.total,
     label: c.name,
-    color: getCategoryColor(c.name).fg,
+    color: getCategoryColor(c.name, palette.categoryOverflow).fg,
   }));
 
   return (
@@ -61,7 +63,7 @@ export function SpendingByCategoryCard() {
                       width: 10,
                       height: 10,
                       borderRadius: '50%',
-                      bgcolor: getCategoryColor(c.name).fg,
+                      bgcolor: getCategoryColor(c.name, palette.categoryOverflow).fg,
                     }}
                   />
                   <Typography variant="body2" sx={{ flex: 1 }}>

@@ -1,7 +1,7 @@
 'use client';
 
 import { Chip } from '@mui/material';
-import { getCategoryColor } from '@/features/categories/colors';
+import { useCategoryColor } from '@/features/categories/colors';
 
 interface CategoryChipProps {
   name: string;
@@ -13,7 +13,7 @@ interface CategoryChipProps {
 /** A colorful chip for a category. When `onClick` is provided it acts as a
  *  toggleable filter pill with active styling when `selected`. */
 export function CategoryChip({ name, selected, onClick, size = 'small' }: CategoryChipProps) {
-  const color = getCategoryColor(name);
+  const color = useCategoryColor(name);
   const clickable = !!onClick;
 
   return (
