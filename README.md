@@ -84,13 +84,43 @@ apps/
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Setting up)
 
 ```bash
-$ docker compose up
+docker compose up
 cd apps/api
 pnpm prisma migrate deploy
 pnpm prisma generate
 pnpm prisma db seed
 pnpm prisma studio
 ```
+## 🚀 Run Locally
+
+### Get the DB ready
+
+```bash
+docker compose up
+```
+
+### Run the API
+
+```bash
+cd apps/api
+pnpm start:dev
+```
+
+### Run the UI
+
+```bash
+cd apps/web
+pnpm dev
+```
+
+### Check the DB
+
+```bash
+cd apps/api
+pnpm prisma studio
+```
+
+
