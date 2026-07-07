@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Box,
@@ -13,13 +13,13 @@ import {
   TableRow,
   Tooltip,
   Typography,
-} from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/DeleteOutlined";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
-import { CategoryChip } from "./CategoryChip";
-import { formatCurrency, formatDate } from "@/lib/format";
-import type { Expense } from "@/features/expenses/types";
+} from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import { CategoryChip } from './CategoryChip';
+import { formatCurrency, formatDate } from '@/lib/format';
+import type { Expense } from '@/features/expenses/types';
 
 interface ExpenseTableProps {
   expenses: Expense[];
@@ -32,7 +32,7 @@ interface ExpenseTableProps {
 export function ExpenseTable({
   expenses,
   isLoading = false,
-  emptyMessage = "No expenses yet.",
+  emptyMessage = 'No expenses yet.',
   onEdit,
   onDelete,
 }: ExpenseTableProps) {
@@ -61,20 +61,16 @@ export function ExpenseTable({
             expenses.map((expense) => (
               <TableRow key={expense.id} hover>
                 <TableCell sx={{ fontWeight: 500 }}>{expense.name}</TableCell>
-                <TableCell align="right">
-                  {formatCurrency(expense.amount)}
-                </TableCell>
+                <TableCell align="right">{formatCurrency(expense.amount)}</TableCell>
                 <TableCell>{formatDate(expense.createdAt)}</TableCell>
                 <TableCell>
-                  <Stack direction="row" spacing={0.5} useFlexGap sx={{ flexWrap: "wrap" }}>
+                  <Stack direction="row" spacing={0.5} useFlexGap sx={{ flexWrap: 'wrap' }}>
                     {expense.categories.length === 0 ? (
                       <Typography variant="body2" color="text.disabled">
                         —
                       </Typography>
                     ) : (
-                      expense.categories.map((c) => (
-                        <CategoryChip key={c.id} name={c.name} />
-                      ))
+                      expense.categories.map((c) => <CategoryChip key={c.id} name={c.name} />)
                     )}
                   </Stack>
                 </TableCell>
@@ -85,11 +81,7 @@ export function ExpenseTable({
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Delete">
-                    <IconButton
-                      size="small"
-                      color="error"
-                      onClick={() => onDelete(expense)}
-                    >
+                    <IconButton size="small" color="error" onClick={() => onDelete(expense)}>
                       <DeleteIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
@@ -124,11 +116,11 @@ function EmptyState({ message }: { message: string }) {
     <Box
       sx={{
         py: 6,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         gap: 1,
-        color: "text.secondary",
+        color: 'text.secondary',
       }}
     >
       <ReceiptLongIcon sx={{ fontSize: 40, opacity: 0.4 }} />

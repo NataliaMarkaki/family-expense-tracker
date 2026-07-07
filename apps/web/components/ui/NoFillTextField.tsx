@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useId } from "react";
-import TextField, { type TextFieldProps } from "@mui/material/TextField";
+import { useId } from 'react';
+import TextField, { type TextFieldProps } from '@mui/material/TextField';
 
 /**
  * A TextField that aggressively suppresses browser autofill/autocomplete.
@@ -11,7 +11,7 @@ import TextField, { type TextFieldProps } from "@mui/material/TextField";
  * <input> breaks that heuristic.
  */
 export function NoFillTextField(props: TextFieldProps) {
-  const uid = useId().replace(/:/g, "");
+  const uid = useId().replace(/:/g, '');
 
   return (
     <TextField
@@ -21,8 +21,8 @@ export function NoFillTextField(props: TextFieldProps) {
         ...props.slotProps,
         htmlInput: {
           ...((props.slotProps as { htmlInput?: object })?.htmlInput ?? {}),
-          autoComplete: "off",
-          "data-form-type": "other",
+          autoComplete: 'off',
+          'data-form-type': 'other',
           id: `field-${uid}`,
           name: `field-${uid}`,
         },

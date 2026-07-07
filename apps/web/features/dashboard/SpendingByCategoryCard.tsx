@@ -1,18 +1,11 @@
-"use client";
+'use client';
 
-import {
-  Box,
-  Card,
-  CardContent,
-  Skeleton,
-  Stack,
-  Typography,
-} from "@mui/material";
-import DonutLargeIcon from "@mui/icons-material/DonutLarge";
-import { PieChart } from "@mui/x-charts/PieChart";
-import { useSummary } from "@/features/expenses/hooks";
-import { getCategoryColor } from "@/features/categories/colors";
-import { formatCurrency } from "@/lib/format";
+import { Box, Card, CardContent, Skeleton, Stack, Typography } from '@mui/material';
+import DonutLargeIcon from '@mui/icons-material/DonutLarge';
+import { PieChart } from '@mui/x-charts/PieChart';
+import { useSummary } from '@/features/expenses/hooks';
+import { getCategoryColor } from '@/features/categories/colors';
+import { formatCurrency } from '@/lib/format';
 
 export function SpendingByCategoryCard() {
   const { data, isLoading, isError } = useSummary();
@@ -26,9 +19,9 @@ export function SpendingByCategoryCard() {
   }));
 
   return (
-    <Card sx={{ height: "100%" }}>
+    <Card sx={{ height: '100%' }}>
       <CardContent>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
           <DonutLargeIcon color="primary" fontSize="small" />
           <Typography variant="subtitle2" color="text.secondary">
             Spending By Category
@@ -42,17 +35,11 @@ export function SpendingByCategoryCard() {
             Failed to load
           </Typography>
         ) : categories.length === 0 ? (
-          <Box sx={{ py: 4, textAlign: "center", color: "text.secondary" }}>
-            <Typography variant="body2">
-              No spending this month yet.
-            </Typography>
+          <Box sx={{ py: 4, textAlign: 'center', color: 'text.secondary' }}>
+            <Typography variant="body2">No spending this month yet.</Typography>
           </Box>
         ) : (
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={2}
-            sx={{ alignItems: "center" }}
-          >
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ alignItems: 'center' }}>
             <PieChart
               series={[
                 {
@@ -66,17 +53,14 @@ export function SpendingByCategoryCard() {
               height={180}
               hideLegend
             />
-            <Stack spacing={1} sx={{ flex: 1, width: "100%" }}>
+            <Stack spacing={1} sx={{ flex: 1, width: '100%' }}>
               {categories.map((c) => (
-                <Box
-                  key={c.id}
-                  sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                >
+                <Box key={c.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Box
                     sx={{
                       width: 10,
                       height: 10,
-                      borderRadius: "50%",
+                      borderRadius: '50%',
                       bgcolor: getCategoryColor(c.name).fg,
                     }}
                   />

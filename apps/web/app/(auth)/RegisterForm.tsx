@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Alert,
   Box,
@@ -12,11 +12,11 @@ import {
   Link as MuiLink,
   Stack,
   Typography,
-} from "@mui/material";
-import { NoFillTextField } from "@/components/ui/NoFillTextField";
-import { useRegister } from "./hooks";
-import { registerSchema, type RegisterFormValues } from "./schemas";
-import { getApiErrorMessage } from "@/lib/error";
+} from '@mui/material';
+import { NoFillTextField } from '@/components/ui/NoFillTextField';
+import { useRegister } from '../../features/auth/hooks';
+import { registerSchema, type RegisterFormValues } from '../../features/auth/schemas';
+import { getApiErrorMessage } from '@/lib/error';
 
 export function RegisterForm() {
   const {
@@ -25,7 +25,7 @@ export function RegisterForm() {
     formState: { errors },
   } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
-    defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
+    defaultValues: { name: '', email: '', password: '', confirmPassword: '' },
   });
 
   const registerMutation = useRegister();
@@ -39,7 +39,7 @@ export function RegisterForm() {
   };
 
   return (
-    <Card sx={{ width: "100%", maxWidth: 440 }}>
+    <Card sx={{ width: '100%', maxWidth: 440 }}>
       <CardContent sx={{ p: 4 }}>
         <Typography variant="h5" gutterBottom>
           Create your account
@@ -52,7 +52,7 @@ export function RegisterForm() {
           <Stack spacing={2.5}>
             {registerMutation.isError && (
               <Alert severity="error">
-                {getApiErrorMessage(registerMutation.error, "Registration failed")}
+                {getApiErrorMessage(registerMutation.error, 'Registration failed')}
               </Alert>
             )}
 
@@ -61,14 +61,14 @@ export function RegisterForm() {
               fullWidth
               error={!!errors.name}
               helperText={errors.name?.message}
-              {...register("name")}
+              {...register('name')}
             />
             <NoFillTextField
               label="Email"
               fullWidth
               error={!!errors.email}
               helperText={errors.email?.message}
-              {...register("email")}
+              {...register('email')}
             />
             <NoFillTextField
               label="Password"
@@ -76,7 +76,7 @@ export function RegisterForm() {
               fullWidth
               error={!!errors.password}
               helperText={errors.password?.message}
-              {...register("password")}
+              {...register('password')}
             />
             <NoFillTextField
               label="Confirm Password"
@@ -84,7 +84,7 @@ export function RegisterForm() {
               fullWidth
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword?.message}
-              {...register("confirmPassword")}
+              {...register('confirmPassword')}
             />
 
             <Button
@@ -93,11 +93,11 @@ export function RegisterForm() {
               size="large"
               disabled={registerMutation.isPending}
             >
-              {registerMutation.isPending ? "Creating account…" : "Create account"}
+              {registerMutation.isPending ? 'Creating account…' : 'Create account'}
             </Button>
 
             <Typography variant="body2" align="center" color="text.secondary">
-              Already have an account?{" "}
+              Already have an account?{' '}
               <MuiLink component={Link} href="/login">
                 Sign in
               </MuiLink>

@@ -1,10 +1,6 @@
-"use client";
+'use client';
 
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   createExpense,
   deleteExpense,
@@ -13,19 +9,15 @@ import {
   getRecentExpenses,
   getSummary,
   updateExpense,
-} from "./api";
-import type {
-  CreateExpensePayload,
-  Expense,
-  UpdateExpensePayload,
-} from "./types";
+} from './api';
+import type { CreateExpensePayload, Expense, UpdateExpensePayload } from './types';
 
 export const expenseKeys = {
-  all: ["expenses"] as const,
-  list: () => [...expenseKeys.all, "list"] as const,
-  recent: () => [...expenseKeys.all, "recent"] as const,
-  monthly: () => [...expenseKeys.all, "monthly"] as const,
-  summary: () => [...expenseKeys.all, "summary"] as const,
+  all: ['expenses'] as const,
+  list: () => [...expenseKeys.all, 'list'] as const,
+  recent: () => [...expenseKeys.all, 'recent'] as const,
+  monthly: () => [...expenseKeys.all, 'monthly'] as const,
+  summary: () => [...expenseKeys.all, 'summary'] as const,
 };
 
 export function useExpenses() {
@@ -76,20 +68,14 @@ export function useDeleteExpense() {
     onMutate: async (id: string) => {
       await queryClient.cancelQueries({ queryKey: expenseKeys.all });
 
-      const listKeys = [
-        expenseKeys.list(),
-        expenseKeys.recent(),
-        expenseKeys.monthly(),
-      ];
+      const listKeys = [expenseKeys.list(), expenseKeys.recent(), expenseKeys.monthly()];
 
       const snapshots = listKeys.map(
         (key) => [key, queryClient.getQueryData<Expense[]>(key)] as const,
       );
 
       for (const [key] of snapshots) {
-        queryClient.setQueryData<Expense[]>(key, (old) =>
-          old?.filter((e) => e.id !== id),
-        );
+        queryClient.setQueryData<Expense[]>(key, (old) => old?.filter((e) => e.id !== id));
       }
 
       return { snapshots };

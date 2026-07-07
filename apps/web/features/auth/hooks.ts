@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { loginRequest, registerRequest } from "./api";
-import { useAuth } from "./AuthProvider";
-import type { LoginPayload, RegisterPayload } from "./types";
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { loginRequest, registerRequest } from './api';
+import { useAuth } from './AuthProvider';
+import type { LoginPayload, RegisterPayload } from './types';
 
 export function useLogin() {
   const { setToken } = useAuth();
@@ -16,7 +16,7 @@ export function useLogin() {
       await setToken(accessToken);
     },
     onSuccess: () => {
-      router.replace("/dashboard");
+      router.replace('/dashboard');
     },
   });
 }
@@ -32,7 +32,7 @@ export function useRegister() {
       await setToken(accessToken);
     },
     onSuccess: () => {
-      router.replace("/dashboard");
+      router.replace('/dashboard');
     },
   });
 }

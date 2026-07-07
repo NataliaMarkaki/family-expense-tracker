@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { Providers } from "./providers";
+import type { Metadata } from 'next';
+import './globals.css';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: "Family Expense Tracker",
+  title: 'Family Expense Tracker',
   description: "Track your family's spending",
 };
 

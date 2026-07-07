@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Alert, Card, CardContent, Typography } from "@mui/material";
-import { ExpenseTable } from "@/components/ui/ExpenseTable";
-import { useRecentExpenses } from "@/features/expenses/hooks";
-import type { Expense } from "@/features/expenses/types";
+import { Alert, Card, CardContent, Typography } from '@mui/material';
+import { ExpenseTable } from '@/components/ui/ExpenseTable';
+import { useRecentExpenses } from '@/features/expenses/hooks';
+import type { Expense } from '@/features/expenses/types';
 
 interface RecentTransactionsProps {
   onEdit: (expense: Expense) => void;

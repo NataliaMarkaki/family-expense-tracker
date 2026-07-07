@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Box, Button, Stack, Typography } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import { MonthlySpendingCard } from "./MonthlySpendingCard";
-import { SpendingByCategoryCard } from "./SpendingByCategoryCard";
-import { RecentTransactions } from "./RecentTransactions";
-import { MonthlyExpenses } from "./MonthlyExpenses";
-import { ExpenseFormModal } from "@/features/expenses/ExpenseFormModal";
-import { DeleteExpenseDialog } from "@/features/expenses/DeleteExpenseDialog";
-import type { Expense } from "@/features/expenses/types";
+import { useState } from 'react';
+import { Box, Button, Stack, Typography } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import { MonthlySpendingCard } from './MonthlySpendingCard';
+import { SpendingByCategoryCard } from './SpendingByCategoryCard';
+import { RecentTransactions } from './RecentTransactions';
+import { MonthlyExpenses } from './MonthlyExpenses';
+import { ExpenseFormModal } from '@/features/expenses/ExpenseFormModal';
+import { DeleteExpenseDialog } from '@/features/expenses/DeleteExpenseDialog';
+import type { Expense } from '@/features/expenses/types';
 
 export function DashboardContent() {
   const [formOpen, setFormOpen] = useState(false);
@@ -33,10 +33,7 @@ export function DashboardContent() {
 
   return (
     <>
-      <Stack
-        direction="row"
-        sx={{ justifyContent: "space-between", alignItems: "center", mb: 3 }}
-      >
+      <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4">Dashboard</Typography>
         <Button variant="contained" startIcon={<AddIcon />} onClick={openAdd}>
           Add Expense
@@ -45,9 +42,9 @@ export function DashboardContent() {
 
       <Box
         sx={{
-          display: "grid",
+          display: 'grid',
           gap: 3,
-          gridTemplateColumns: { xs: "1fr", md: "1fr 2fr" },
+          gridTemplateColumns: { xs: '1fr', md: '1fr 2fr' },
           mb: 3,
         }}
       >
@@ -61,10 +58,7 @@ export function DashboardContent() {
       </Stack>
 
       <ExpenseFormModal open={formOpen} onClose={closeForm} expense={editing} />
-      <DeleteExpenseDialog
-        expense={deleting}
-        onClose={() => setDeleting(null)}
-      />
+      <DeleteExpenseDialog expense={deleting} onClose={() => setDeleting(null)} />
     </>
   );
 }

@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { Box, CircularProgress } from "@mui/material";
-import { useAuth } from "./AuthProvider";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Box, CircularProgress } from '@mui/material';
+import { useAuth } from './AuthProvider';
 
 function FullScreenLoader() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <CircularProgress />
@@ -30,7 +30,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.replace("/login");
+      router.replace('/login');
     }
   }, [isLoading, isAuthenticated, router]);
 
@@ -49,7 +49,7 @@ export function PublicOnlyRoute({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      router.replace("/dashboard");
+      router.replace('/dashboard');
     }
   }, [isLoading, isAuthenticated, router]);
 

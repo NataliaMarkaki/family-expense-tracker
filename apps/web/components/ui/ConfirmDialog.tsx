@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Button,
@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@mui/material";
+} from '@mui/material';
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -25,8 +25,8 @@ export function ConfirmDialog({
   open,
   title,
   message,
-  confirmLabel = "Confirm",
-  cancelLabel = "Cancel",
+  confirmLabel = 'Confirm',
+  cancelLabel = 'Cancel',
   loading = false,
   onConfirm,
   onCancel,
@@ -41,13 +41,8 @@ export function ConfirmDialog({
         <Button onClick={onCancel} disabled={loading} color="inherit">
           {cancelLabel}
         </Button>
-        <Button
-          onClick={onConfirm}
-          disabled={loading}
-          variant="contained"
-          color="error"
-        >
-          {loading ? "Deleting…" : confirmLabel}
+        <Button onClick={onConfirm} disabled={loading} variant="contained" color="error">
+          {loading ? 'Deleting…' : confirmLabel}
         </Button>
       </DialogActions>
     </Dialog>

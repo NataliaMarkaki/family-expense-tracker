@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
-import { Button } from "@mui/material";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useAuth } from "./AuthProvider";
+import { useRouter } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+import { Button } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useAuth } from '../../features/auth/AuthProvider';
 
 export function LogoutButton() {
   const { logout } = useAuth();
@@ -14,7 +14,7 @@ export function LogoutButton() {
   const handleLogout = () => {
     logout();
     queryClient.clear();
-    router.replace("/login");
+    router.replace('/login');
   };
 
   return (

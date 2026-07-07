@@ -1,20 +1,12 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import {
-  Alert,
-  Box,
-  Card,
-  CardContent,
-  Skeleton,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { CategoryChip } from "@/components/ui/CategoryChip";
-import { ExpenseTable } from "@/components/ui/ExpenseTable";
-import { useCategories } from "@/features/categories/hooks";
-import { useMonthlyExpenses } from "@/features/expenses/hooks";
-import type { Expense } from "@/features/expenses/types";
+import { useMemo, useState } from 'react';
+import { Alert, Box, Card, CardContent, Skeleton, Stack, Typography } from '@mui/material';
+import { CategoryChip } from '@/components/ui/CategoryChip';
+import { ExpenseTable } from '@/components/ui/ExpenseTable';
+import { useCategories } from '@/features/categories/hooks';
+import { useMonthlyExpenses } from '@/features/expenses/hooks';
+import type { Expense } from '@/features/expenses/types';
 
 interface MonthlyExpensesProps {
   onEdit: (expense: Expense) => void;
@@ -38,9 +30,7 @@ export function MonthlyExpenses({ onEdit, onDelete }: MonthlyExpensesProps) {
   // OR semantics: an expense matches if it has any of the selected categories.
   const filtered = useMemo(() => {
     if (selected.size === 0) return expenses;
-    return expenses.filter((e) =>
-      e.categories.some((c) => selected.has(c.id)),
-    );
+    return expenses.filter((e) => e.categories.some((c) => selected.has(c.id)));
   }, [expenses, selected]);
 
   return (
@@ -54,7 +44,7 @@ export function MonthlyExpenses({ onEdit, onDelete }: MonthlyExpensesProps) {
           <Skeleton variant="rounded" height={40} sx={{ mb: 2 }} />
         ) : (
           <Box sx={{ mb: 2 }}>
-            <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: "wrap" }}>
+            <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap' }}>
               {categories.map((c) => (
                 <CategoryChip
                   key={c.id}
@@ -78,8 +68,8 @@ export function MonthlyExpenses({ onEdit, onDelete }: MonthlyExpensesProps) {
             isLoading={isLoading}
             emptyMessage={
               selected.size > 0
-                ? "No expenses match the selected categories."
-                : "No expenses this month."
+                ? 'No expenses match the selected categories.'
+                : 'No expenses this month.'
             }
             onEdit={onEdit}
             onDelete={onDelete}

@@ -1,10 +1,10 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const expenseSchema = z.object({
-  name: z.string().min(1, "Name is required"),
+  name: z.string().min(1, 'Name is required'),
   amount: z.coerce
-    .number({ message: "Amount is required" })
-    .positive("Amount must be greater than 0"),
+    .number({ message: 'Amount is required' })
+    .positive('Amount must be greater than 0'),
   categoryIds: z.array(z.string()),
 });
 

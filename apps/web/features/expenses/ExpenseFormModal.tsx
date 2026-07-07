@@ -1,23 +1,15 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Alert,
-  Autocomplete,
-  Box,
-  Button,
-  InputAdornment,
-  Stack,
-  TextField,
-} from "@mui/material";
-import { AppModal } from "@/components/ui/AppModal";
-import { useCategories } from "@/features/categories/hooks";
-import { useCreateExpense, useUpdateExpense } from "./hooks";
-import { expenseSchema, type ExpenseFormValues } from "./schemas";
-import type { Expense } from "./types";
-import { getApiErrorMessage } from "@/lib/error";
+import { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Alert, Autocomplete, Box, Button, InputAdornment, Stack, TextField } from '@mui/material';
+import { AppModal } from '@/components/ui/AppModal';
+import { useCategories } from '@/features/categories/hooks';
+import { useCreateExpense, useUpdateExpense } from './hooks';
+import { expenseSchema, type ExpenseFormValues } from './schemas';
+import type { Expense } from './types';
+import { getApiErrorMessage } from '@/lib/error';
 
 interface ExpenseFormModalProps {
   open: boolean;
@@ -27,16 +19,12 @@ interface ExpenseFormModalProps {
 }
 
 const emptyValues: ExpenseFormValues = {
-  name: "",
-  amount: "" as unknown as number,
+  name: '',
+  amount: '' as unknown as number,
   categoryIds: [],
 };
 
-export function ExpenseFormModal({
-  open,
-  onClose,
-  expense,
-}: ExpenseFormModalProps) {
+export function ExpenseFormModal({ open, onClose, expense }: ExpenseFormModalProps) {
   const isEdit = !!expense;
   const { data: categories = [] } = useCategories();
   const createMutation = useCreateExpense();
@@ -86,16 +74,12 @@ export function ExpenseFormModal({
   });
 
   return (
-    <AppModal
-      open={open}
-      onClose={onClose}
-      title={isEdit ? "Edit Expense" : "Add Expense"}
-    >
+    <AppModal open={open} onClose={onClose} title={isEdit ? 'Edit Expense' : 'Add Expense'}>
       <Box component="form" onSubmit={onSubmit} noValidate autoComplete="off">
         <Stack spacing={2.5} sx={{ pt: 1 }}>
           {mutation.isError && (
             <Alert severity="error">
-              {getApiErrorMessage(mutation.error, "Could not save expense")}
+              {getApiErrorMessage(mutation.error, 'Could not save expense')}
             </Alert>
           )}
 
@@ -106,7 +90,7 @@ export function ExpenseFormModal({
             autoComplete="off"
             error={!!errors.name}
             helperText={errors.name?.message}
-            {...register("name")}
+            {...register('name')}
           />
 
           <TextField
@@ -115,16 +99,14 @@ export function ExpenseFormModal({
             fullWidth
             autoComplete="off"
             slotProps={{
-              htmlInput: { step: "0.01", min: "0" },
+              htmlInput: { step: '0.01', min: '0' },
               input: {
-                endAdornment: (
-                  <InputAdornment position="start">£</InputAdornment>
-                ),
+                endAdornment: <InputAdornment position="start">£</InputAdornment>,
               },
             }}
             error={!!errors.amount}
             helperText={errors.amount?.message}
-            {...register("amount")}
+            {...register('amount')}
           />
 
           <Controller
@@ -137,30 +119,20 @@ export function ExpenseFormModal({
                 getOptionLabel={(option) => option.name}
                 isOptionEqualToValue={(option, value) => option.id === value.id}
                 value={categories.filter((c) => field.value.includes(c.id))}
-                onChange={(_, selected) =>
-                  field.onChange(selected.map((c) => c.id))
-                }
+                onChange={(_, selected) => field.onChange(selected.map((c) => c.id))}
                 renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Categories"
-                    placeholder="Select categories"
-                  />
+                  <TextField {...params} label="Categories" placeholder="Select categories" />
                 )}
               />
             )}
           />
 
-          <Stack direction="row" spacing={1.5} sx={{ justifyContent: "flex-end" }}>
+          <Stack direction="row" spacing={1.5} sx={{ justifyContent: 'flex-end' }}>
             <Button color="inherit" onClick={onClose} disabled={mutation.isPending}>
               Cancel
             </Button>
             <Button type="submit" variant="contained" disabled={mutation.isPending}>
-              {mutation.isPending
-                ? "Saving…"
-                : isEdit
-                  ? "Save Changes"
-                  : "Add Expense"}
+              {mutation.isPending ? 'Saving…' : isEdit ? 'Save Changes' : 'Add Expense'}
             </Button>
           </Stack>
         </Stack>

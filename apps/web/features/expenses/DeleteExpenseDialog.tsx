@@ -1,18 +1,15 @@
-"use client";
+'use client';
 
-import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
-import { useDeleteExpense } from "./hooks";
-import type { Expense } from "./types";
+import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
+import { useDeleteExpense } from './hooks';
+import type { Expense } from './types';
 
 interface DeleteExpenseDialogProps {
   expense: Expense | null;
   onClose: () => void;
 }
 
-export function DeleteExpenseDialog({
-  expense,
-  onClose,
-}: DeleteExpenseDialogProps) {
+export function DeleteExpenseDialog({ expense, onClose }: DeleteExpenseDialogProps) {
   const deleteMutation = useDeleteExpense();
 
   const handleConfirm = () => {
@@ -26,8 +23,8 @@ export function DeleteExpenseDialog({
       title="Delete expense?"
       message={
         <>
-          This will permanently delete{" "}
-          <strong>{expense?.name}</strong>. This action cannot be undone.
+          This will permanently delete <strong>{expense?.name}</strong>. This action cannot be
+          undone.
         </>
       }
       confirmLabel="Delete"

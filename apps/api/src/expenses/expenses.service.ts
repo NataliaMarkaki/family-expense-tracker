@@ -62,10 +62,7 @@ export class ExpensesService {
       }),
     ]);
 
-    const monthlyTotal = monthlyExpenses.reduce(
-      (sum, e) => sum + Number(e.amount),
-      0,
-    );
+    const monthlyTotal = monthlyExpenses.reduce((sum, e) => sum + Number(e.amount), 0);
 
     const categoryMap = new Map<string, { id: string; name: string; total: number }>();
     for (const expense of monthlyExpenses) {
