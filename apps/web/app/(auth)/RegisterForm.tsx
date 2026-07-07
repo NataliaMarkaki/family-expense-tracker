@@ -14,8 +14,8 @@ import {
   Typography,
 } from '@mui/material';
 import { NoFillTextField } from '@/components/ui/NoFillTextField';
-import { useRegister } from '../../features/auth/hooks';
-import { registerSchema, type RegisterFormValues } from '../../features/auth/schemas';
+import { useRegister } from '@/features/auth/hooks';
+import { registerSchema, type RegisterFormValues } from '@/features/auth/schemas';
 import { getApiErrorMessage } from '@/lib/error';
 
 export function RegisterForm() {

@@ -7,8 +7,8 @@ import { MonthlySpendingCard } from './MonthlySpendingCard';
 import { SpendingByCategoryCard } from './SpendingByCategoryCard';
 import { RecentTransactions } from './RecentTransactions';
 import { MonthlyExpenses } from './MonthlyExpenses';
-import { ExpenseFormModal } from '@/features/expenses/ExpenseFormModal';
-import { DeleteExpenseDialog } from '@/features/expenses/DeleteExpenseDialog';
+import { ExpenseFormModal } from '@/app/(dashboard)/dashboard/ExpenseFormModal';
+import { DeleteExpenseDialog } from '@/app/(dashboard)/dashboard/DeleteExpenseDialog';
 import type { Expense } from '@/features/expenses/types';
 
 export function DashboardContent() {

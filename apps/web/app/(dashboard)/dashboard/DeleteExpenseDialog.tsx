@@ -1,8 +1,8 @@
 'use client';
 
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
-import { useDeleteExpense } from './hooks';
-import type { Expense } from './types';
+import { useDeleteExpense } from '@/features/expenses/hooks';
+import type { Expense } from '@/features/expenses/types';
 
 interface DeleteExpenseDialogProps {
   expense: Expense | null;

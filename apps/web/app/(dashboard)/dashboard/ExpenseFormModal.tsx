@@ -6,9 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Alert, Autocomplete, Box, Button, InputAdornment, Stack, TextField } from '@mui/material';
 import { AppModal } from '@/components/ui/AppModal';
 import { useCategories } from '@/features/categories/hooks';
-import { useCreateExpense, useUpdateExpense } from './hooks';
-import { expenseSchema, type ExpenseFormValues } from './schemas';
-import type { Expense } from './types';
+import { useCreateExpense, useUpdateExpense } from '@/features/expenses/hooks';
+import { expenseSchema, type ExpenseFormValues } from '@/features/expenses/schemas';
+import type { Expense } from '@/features/expenses/types';
 import { getApiErrorMessage } from '@/lib/error';
 
 interface ExpenseFormModalProps {

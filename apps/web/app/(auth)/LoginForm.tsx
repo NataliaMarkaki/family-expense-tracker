@@ -14,8 +14,8 @@ import {
   Typography,
 } from '@mui/material';
 import { NoFillTextField } from '@/components/ui/NoFillTextField';
-import { useLogin } from '../../features/auth/hooks';
-import { loginSchema, type LoginFormValues } from '../../features/auth/schemas';
+import { useLogin } from '@/features/auth/hooks';
+import { loginSchema, type LoginFormValues } from '@/features/auth/schemas';
 import { getApiErrorMessage } from '@/lib/error';
 
 export function LoginForm() {
