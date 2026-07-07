@@ -1,11 +1,11 @@
 'use client';
 
+import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import { Box, Card, CardContent, Skeleton, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import { PieChart } from '@mui/x-charts/PieChart';
-import { useSummary } from '@/features/expenses/hooks';
 import { getCategoryColor } from '@/features/categories/colors';
+import { useSummary } from '@/features/expenses/hooks';
 import { formatCurrency } from '@/lib/format';
 
 export function SpendingByCategoryCard() {

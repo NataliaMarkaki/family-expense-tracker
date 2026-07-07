@@ -1,7 +1,7 @@
 'use client';
 
-import { Dialog, DialogContent, DialogTitle, IconButton, type DialogProps } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { Dialog, DialogContent, DialogTitle, IconButton, type DialogProps } from '@mui/material';
 
 interface AppModalProps {
   open: boolean;

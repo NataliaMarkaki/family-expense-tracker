@@ -1,7 +1,7 @@
 'use client';
 
-import { useMemo, useState } from 'react';
 import { Alert, Box, Card, CardContent, Skeleton, Stack, Typography } from '@mui/material';
+import { useMemo, useState } from 'react';
 import { CategoryChip } from '@/components/ui/CategoryChip';
 import { ExpenseTable } from '@/components/ui/ExpenseTable';
 import { useCategories } from '@/features/categories/hooks';

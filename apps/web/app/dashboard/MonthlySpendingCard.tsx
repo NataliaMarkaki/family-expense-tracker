@@ -1,7 +1,7 @@
 'use client';
 
-import { Box, Card, CardContent, Skeleton, Typography } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import { Box, Card, CardContent, Skeleton, Typography } from '@mui/material';
 import { useSummary } from '@/features/expenses/hooks';
 import { formatCurrency } from '@/lib/format';
 

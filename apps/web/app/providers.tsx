@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { theme } from '@/lib/theme';
+import { useState } from 'react';
 import { AuthProvider } from '@/features/auth/AuthProvider';
+import { theme } from '@/lib/theme';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(

@@ -1,5 +1,8 @@
 'use client';
 
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import EditIcon from '@mui/icons-material/Edit';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import {
   Box,
   IconButton,
@@ -14,12 +17,9 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import { CategoryChip } from './CategoryChip';
-import { formatCurrency, formatDate } from '@/lib/format';
 import type { Expense } from '@/features/expenses/types';
+import { formatCurrency, formatDate } from '@/lib/format';
+import { CategoryChip } from './CategoryChip';
 
 interface ExpenseTableProps {
   expenses: Expense[];

@@ -1,9 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useQueryClient } from '@tanstack/react-query';
-import { Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from '@mui/material';
+import { useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/features/auth/AuthProvider';
 
 export function LogoutButton() {

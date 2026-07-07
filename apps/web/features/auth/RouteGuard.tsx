@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Box, CircularProgress } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useAuth } from './AuthProvider';
 
 function FullScreenLoader() {

@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Alert,
@@ -13,6 +11,8 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 import { NoFillTextField } from '@/components/ui/NoFillTextField';
 import { useRegister } from '@/features/auth/hooks';
 import { registerSchema, type RegisterFormValues } from '@/features/auth/schemas';

@@ -18,10 +18,7 @@ function hashIndex(name: string, length: number): number {
  * theme.palette.categoryOverflow. Pass the overflow palette as the second
  * argument when calling outside a React component (e.g. chart data prep).
  */
-export function getCategoryColor(
-  name: string,
-  overflowPalette?: CategoryColor[],
-): CategoryColor {
+export function getCategoryColor(name: string, overflowPalette?: CategoryColor[]): CategoryColor {
   if (categoryColors[name]) return categoryColors[name];
   const palette = overflowPalette ?? [];
   if (palette.length === 0) return { bg: '#f5f5f5', fg: '#616161' };

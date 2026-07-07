@@ -1,15 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { Box, Button, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { MonthlySpendingCard } from './MonthlySpendingCard';
-import { SpendingByCategoryCard } from './SpendingByCategoryCard';
-import { RecentTransactions } from './RecentTransactions';
-import { MonthlyExpenses } from './MonthlyExpenses';
-import { ExpenseFormModal } from './ExpenseFormModal';
-import { DeleteExpenseDialog } from './DeleteExpenseDialog';
+import { Box, Button, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
 import type { Expense } from '@/features/expenses/types';
+import { DeleteExpenseDialog } from './DeleteExpenseDialog';
+import { ExpenseFormModal } from './ExpenseFormModal';
+import { MonthlyExpenses } from './MonthlyExpenses';
+import { MonthlySpendingCard } from './MonthlySpendingCard';
+import { RecentTransactions } from './RecentTransactions';
+import { SpendingByCategoryCard } from './SpendingByCategoryCard';
 
 export function DashboardContent() {
   const [formOpen, setFormOpen] = useState(false);

@@ -3,7 +3,6 @@
 import { AppBar, Box, Container, Stack, Toolbar, Typography } from '@mui/material';
 import { LogoutButton } from '@/app/(auth)/LogoutButton';
 import { useAuth } from '@/features/auth/AuthProvider';
-
 import { DashboardContent } from './DashboardContent';
 
 export default function DashboardPage() {
